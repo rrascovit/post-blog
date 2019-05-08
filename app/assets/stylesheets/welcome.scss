@@ -1,0 +1,23 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home {
+  background-image: url("home.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 700px;
+  margin-top: -50px;
+
+}
+
+.home h1 {
+  padding-top: 150px;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+.home p {
+  color: white;
+}

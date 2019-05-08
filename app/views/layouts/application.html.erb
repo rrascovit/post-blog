@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostBlog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    <div id="page-container">
+
+      <div class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-6 col-md-6">
+              <div class="logo">
+                <% if current_user %>
+                  <%= link_to index_path do %>
+                    <%= image_tag "logo.png" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to root_path do %>
+                    <%= image_tag "logo.png" %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-xs-6 col-md-6">
+              <div class="nav">
+                <% if current_user %>
+                  <ul>
+                    <li><%= current_user.username %></li>
+                    <li><%= link_to "New post", new_post_path(@client), class: "btn btn-info" %></li>
+                    <li><%= link_to "Log out", logout_path, method: "delete", class: "btn btn-warning" %></li>
+
+                  </ul>
+                <% else %>
+                  <ul>
+                    <li><%= link_to "Login", login_path, class: "btn btn-primary" %></li>
+                    <li><%= link_to "Signup", signup_path, class: "btn btn-primary" %></li>
+                  </ul>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= yield %>
+
+      <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <div class="footer-nav">
+                <ul>
+                  <li><%= link_to "Contact", 'https://api.whatsapp.com/send?phone=5561985372551&text=Hello,%20my%20friend!', class: "btn btn-outline-dark" %></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <h5>Rascovit&trade;<span>Copyright&copy; 2019</span></h5>
+              <h6></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
